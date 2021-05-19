@@ -1,3 +1,3 @@
-# MatheMann 187 Rüdl Düdl
+# MatheMann
 Mathematisches Lernspiel
 
