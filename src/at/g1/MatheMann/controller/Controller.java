@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
+import javafx.scene.media.*;
 import javafx.stage.Stage;
 
 /**
@@ -37,7 +38,7 @@ public class Controller
             ctrl.stage = stage;
 
             stage.setTitle("MatheMann");
-            stage.getIcons().add(new Image("/at/g1/MatheMann/images/icon.png"));
+            stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
             stage.setScene(new Scene(root));
             stage.show();
         }
@@ -51,5 +52,16 @@ public class Controller
             System.err.println(exception.getMessage());
             exception.printStackTrace(System.err);
         }
+    }
+
+    /**
+     * Plays a sound when the answer was correct
+     */
+    private void playSound()
+    {
+        String ressource_sound = "/at/g1/MatheMann/ressources/sound.mp3";
+        Media sound = new Media(ressource_sound);
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 }
