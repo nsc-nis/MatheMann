@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 /**
  * MatheMann - Controller
  * @author Niklas Schachl
- * @version: 1.0, 19.5.2021
+ * @version: 1.0, 25.5.2021
  */
 public class Controller
 {
@@ -21,6 +21,10 @@ public class Controller
 
     }
 
+    /**
+     * Opens the stage and shows the window
+     * @param stage The stage is given to the controller by the main-Class
+     */
     public static void show(Stage stage)
     {
         try
