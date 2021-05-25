@@ -1,5 +1,8 @@
 package at.g1.MatheMann.model;
 
+/**
+ * A Question has a Text and 4 possible Answers
+ */
 public class Question {
     private String value;
     private Answer[] answers = new Answer[4];
