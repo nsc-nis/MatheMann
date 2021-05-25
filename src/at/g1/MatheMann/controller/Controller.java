@@ -33,7 +33,7 @@ public class Controller
             ctrl.stage = stage;
 
             stage.setTitle("MatheMann");
-            //stage.getIcons().add(new Image("/at/nsc/images/icon_logo.png"));
+            stage.getIcons().add(new Image("/at/g1/MatheMann/images/icon.png"));
             stage.setScene(new Scene(root));
             stage.show();
         }
