@@ -10,35 +10,31 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.g1.MatheMann.controller.Controller">
    <children>
-      <VBox layoutY="-1.0" prefHeight="400.0" prefWidth="600.0">
+      <VBox layoutY="-1.0" prefHeight="511.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="0.0">
                <children>
-                  <TextField editable="false" prefHeight="25.0" prefWidth="155.0" />
-                  <HBox prefHeight="100.0" prefWidth="0.0" />
-                  <TextArea editable="false" prefHeight="100.0" prefWidth="274.0">
+                  <TextField fx:id="text_score" editable="false" prefHeight="57.0" prefWidth="155.0" text="score" />
+                  <Button fx:id="button_settings" mnemonicParsing="false" prefHeight="50.0" prefWidth="55.0" text="Setttings">
                      <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </TextArea>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="55.0" text="Setttings">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="124.0" />
+                        <Insets bottom="5.0" left="390.0" />
                      </HBox.margin>
                   </Button>
                </children>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
             </HBox>
+            <TextArea fx:id="text_questions" editable="false" prefHeight="89.0" prefWidth="574.0">
+               <VBox.margin>
+                  <Insets left="27.0" right="23.0" />
+               </VBox.margin>
+            </TextArea>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <Button fx:id="button_1" mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="27.0" right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <Button fx:id="button_2" mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="23.0" right="23.0" />
                      </HBox.margin>
@@ -50,12 +46,12 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <Button fx:id="button_3" mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="27.0" right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <Button fx:id="button_4" mnemonicParsing="false" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="23.0" right="23.0" />
                      </HBox.margin>
@@ -64,6 +60,15 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+            </HBox>
+            <HBox prefHeight="82.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="button_next" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="next">
+                     <HBox.margin>
+                        <Insets left="548.0" top="56.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
             </HBox>
          </children>
       </VBox>
