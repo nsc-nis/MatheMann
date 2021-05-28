@@ -41,8 +41,6 @@ public class Controller
     {
         try
         {
-            playSound();
-
             FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("/at/g1/MatheMann/view/view.fxml"));
             Parent root = fxmlLoader.load();
 
@@ -55,7 +53,12 @@ public class Controller
             stage.setScene(new Scene(root));
             stage.show();
 
-            //playSound();
+            Clip clip;
+            AudioInputStream audioInputStream;
+            audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/intro.wav").getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
         }
         catch (Exception exception)
         {
