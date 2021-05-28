@@ -6,6 +6,7 @@ package at.g1.MatheMann.model;
 public class Question {
     private String value;
     private Answer[] answers = new Answer[4];
+    int i = 0;
 
     /**
      * Creates a Question with 4 possible Answers
@@ -66,5 +67,13 @@ public class Question {
      */
     public Answer[] getAnswers() {
         return answers;
+    }
+
+    public Answer getAnswer()
+    {
+        if(i > 4)
+            i = 0;
+
+        return answers[i];
     }
 }
