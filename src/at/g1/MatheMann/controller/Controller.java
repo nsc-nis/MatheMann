@@ -18,6 +18,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -25,12 +26,17 @@ import java.util.ResourceBundle;
 
 /**
  * MatheMann - Controller
- * @author Niklas Schachl
+ * @author Simon Sperr
  * @version: 1.0, 25.5.2021
  */
 public class Controller implements Initializable
 {
     private Stage stage;
+
+    private ArrayList<Question> class1;
+    private ArrayList<Question> class2;
+    private ArrayList<Question> class3;
+    private ArrayList<Question> class4;
 
     @FXML
     private TextField text_score;
@@ -115,10 +121,10 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        importQuestions("questions/Klasse1.csv");
-        importQuestions("questions/Klasse2.csv");
-        importQuestions("questions/Klasse3.csv");
-        importQuestions("questions/Klasse4.csv");
+        class1 = importQuestions("questions/Klasse1.csv");
+        class2 = importQuestions("questions/Klasse2.csv");
+        class3 = importQuestions("questions/Klasse3.csv");
+        class4 = importQuestions("questions/Klasse4.csv");
     }
 
     @FXML
