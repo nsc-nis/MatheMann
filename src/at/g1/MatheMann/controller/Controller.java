@@ -1,32 +1,47 @@
 package at.g1.MatheMann.controller;
 
-import javafx.embed.swing.JFXPanel;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * MatheMann - Controller
  * @author Niklas Schachl
  * @version: 1.0, 25.5.2021
  */
-public class Controller
+public class Controller implements Initializable
 {
     private Stage stage;
+
+    @FXML
+    private TextField text_score;
+    @FXML
+    private Button button_settings;
+    @FXML
+    private TextArea text_questions;
+    @FXML
+    private Button button_1;
+    @FXML
+    private Button button_2;
+    @FXML
+    private Button button_3;
+    @FXML
+    private Button button_4;
+    @FXML
+    private Button button_next;
 
     public Controller()
     {
@@ -41,7 +56,7 @@ public class Controller
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("/at/g1/MatheMann/view/view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("/at/g1/MatheMann/view/game.fxml"));
             Parent root = fxmlLoader.load();
 
             //get controller which is connected to this fxml file
@@ -75,15 +90,8 @@ public class Controller
     /**
      * Plays a sound when the answer was correct
      */
-    private static void playSound() throws NullPointerException, LineUnavailableException, IOException, UnsupportedAudioFileException, InterruptedException {
-        /*
-
-        URL file = Controller.class.getResource("/at/g1/MatheMann/view/sound.mp3");
-        final Media media = new Media(file.toString());
-        final MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
-        */
-
+    private static void playSound() throws NullPointerException, LineUnavailableException, IOException, UnsupportedAudioFileException
+    {
         Clip clip;
         AudioInputStream audioInputStream;
 
@@ -96,5 +104,29 @@ public class Controller
         // open audioInputStream to the clip
         clip.open(audioInputStream);
         clip.loop(1);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+
+    }
+
+    @FXML
+    private void action_settings()
+    {
+
+    }
+
+    @FXML
+    private void action_next()
+    {
+
+    }
+
+    @FXML
+    private void action_answer()
+    {
+
     }
 }
