@@ -115,10 +115,10 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        importQuestions("Klasse1.csv");
-        importQuestions("Klasse2.csv");
-        importQuestions("Klasse3.csv");
-        importQuestions("Klasse4.csv");
+        importQuestions("questions/Klasse1.csv");
+        importQuestions("questions/Klasse2.csv");
+        importQuestions("questions/Klasse3.csv");
+        importQuestions("questions/Klasse4.csv");
     }
 
     @FXML
