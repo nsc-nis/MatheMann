@@ -1,5 +1,7 @@
 package at.g1.MatheMann.controller;
 
+import at.g1.MatheMann.model.Answer;
+import at.g1.MatheMann.model.Question;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,9 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javax.sound.sampled.*;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Queue;
 import java.util.ResourceBundle;
 
 /**
@@ -109,7 +115,10 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-
+        importQuestions("Klasse1.csv");
+        importQuestions("Klasse2.csv");
+        importQuestions("Klasse3.csv");
+        importQuestions("Klasse4.csv");
     }
 
     @FXML
@@ -128,5 +137,29 @@ public class Controller implements Initializable
     private void action_answer()
     {
 
+    }
+
+    /**
+     *
+     * @param filename The Name of the save File that has to be imported
+     * @return An Arraylist of all Questions contained in the File
+     */
+    private ArrayList<Question> importQuestions(String filename)
+    {
+        try(BufferedReader br = new BufferedReader(new FileReader(filename)))
+        {
+            ArrayList<Question> questions = new ArrayList<>();
+            String q = br.readLine();
+            if(q.equals("Question SaveFile 1.0"))
+            {
+                while ((q = br.readLine()) != null)
+                {
+                    String split[] = q.split(";");
+                    questions.add(new Question(split[0], new Answer(split[1], Boolean.parseBoolean(split[2])), new Answer(split[3], Boolean.parseBoolean(split[4])), new Answer(split[5], Boolean.parseBoolean(split[6])), new Answer(split[7], Boolean.parseBoolean(split[8]))));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Fehler beim Laden!");
+        }
     }
 }
