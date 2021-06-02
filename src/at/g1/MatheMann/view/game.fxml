@@ -2,13 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.RadioButton?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.g1.MatheMann.controller.Controller">
    <children>
       <VBox layoutY="-1.0" prefHeight="511.0" prefWidth="600.0">
@@ -16,7 +16,7 @@
             <HBox prefHeight="100.0" prefWidth="0.0">
                <children>
                   <TextField fx:id="text_score" editable="false" prefHeight="57.0" prefWidth="155.0" text="score" />
-                  <Button fx:id="button_settings" mnemonicParsing="false" onAction="#action_settings" prefHeight="50.0" prefWidth="55.0" text="Setttings">
+                  <Button fx:id="button_settings" mnemonicParsing="false" onAction="#action_settings" prefHeight="50.0" prefWidth="55.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="390.0" />
                      </HBox.margin>
