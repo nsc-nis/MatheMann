@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javax.sound.sampled.*;
@@ -27,7 +24,7 @@ import java.util.ResourceBundle;
 /**
  * MatheMann - Controller
  * @author Simon Sperr
- * @version: 1.0, 25.5.2021
+ * @version: 1.0, 1.6.2021
  */
 public class Controller implements Initializable
 {
@@ -45,13 +42,13 @@ public class Controller implements Initializable
     @FXML
     private TextArea text_questions;
     @FXML
-    private Button button_1;
+    private RadioButton button_1;
     @FXML
-    private Button button_2;
+    private RadioButton button_2;
     @FXML
-    private Button button_3;
+    private RadioButton button_3;
     @FXML
-    private Button button_4;
+    private RadioButton button_4;
     @FXML
     private Button button_next;
 
@@ -152,9 +149,9 @@ public class Controller implements Initializable
      */
     private ArrayList<Question> importQuestions(String filename)
     {
+        ArrayList<Question> questions = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(filename)))
         {
-            ArrayList<Question> questions = new ArrayList<>();
             String q = br.readLine();
             if(q.equals("Question SaveFile 1.0"))
             {
@@ -167,5 +164,6 @@ public class Controller implements Initializable
         } catch (Exception e) {
             System.out.println("Fehler beim Laden!");
         }
+        return questions;
     }
 }
