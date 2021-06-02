@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.sound.sampled.*;
 import java.io.BufferedReader;
@@ -122,6 +123,8 @@ public class Controller implements Initializable
         class2 = importQuestions("questions/Klasse2.csv");
         class3 = importQuestions("questions/Klasse3.csv");
         class4 = importQuestions("questions/Klasse4.csv");
+
+        button_settings.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/options.png")));
     }
 
     @FXML
