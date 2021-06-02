@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.RadioButton?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.g1.MatheMann.controller.Controller">
    <children>
       <VBox layoutY="-1.0" prefHeight="511.0" prefWidth="600.0">
@@ -29,16 +30,16 @@
             </TextArea>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="button_1" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <RadioButton fx:id="button_1" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="27.0" right="5.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button fx:id="button_2" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  </RadioButton>
+                  <RadioButton fx:id="button_2" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="23.0" right="23.0" />
                      </HBox.margin>
-                  </Button>
+                  </RadioButton>
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -46,16 +47,16 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="button_3" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <RadioButton fx:id="button_3" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="27.0" right="5.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button fx:id="button_4" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  </RadioButton>
+                  <RadioButton fx:id="button_4" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
                      <HBox.margin>
                         <Insets left="23.0" right="23.0" />
                      </HBox.margin>
-                  </Button>
+                  </RadioButton>
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
