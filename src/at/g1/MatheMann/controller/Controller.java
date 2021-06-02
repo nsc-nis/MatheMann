@@ -119,10 +119,10 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        class1 = importQuestions("questions/Klasse1.csv");
-        class2 = importQuestions("questions/Klasse2.csv");
-        class3 = importQuestions("questions/Klasse3.csv");
-        class4 = importQuestions("questions/Klasse4.csv");
+        class1 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse1.csv");
+        class2 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse2.csv");
+        class3 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse3.csv");
+        class4 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse4.csv");
 
         button_settings.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/options.png")));
     }
