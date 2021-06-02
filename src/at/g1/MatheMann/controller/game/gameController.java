@@ -1,4 +1,4 @@
-package at.g1.MatheMann.controller;
+package at.g1.MatheMann.controller.game;
 
 import at.g1.MatheMann.model.Answer;
 import at.g1.MatheMann.model.Question;
@@ -16,10 +16,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Queue;
 import java.util.ResourceBundle;
 
 /**
@@ -27,7 +25,7 @@ import java.util.ResourceBundle;
  * @author Simon Sperr
  * @version: 1.0, 1.6.2021
  */
-public class Controller implements Initializable
+public class gameController implements Initializable
 {
     private Stage stage;
 
@@ -53,7 +51,7 @@ public class Controller implements Initializable
     @FXML
     private Button button_next;
 
-    public Controller()
+    public gameController()
     {
 
     }
@@ -66,11 +64,11 @@ public class Controller implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("/at/g1/MatheMann/view/game.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(gameController.class.getResource("/at/g1/MatheMann/view/game.fxml"));
             Parent root = fxmlLoader.load();
 
             //get controller which is connected to this fxml file
-            Controller ctrl = fxmlLoader.getController();
+            gameController ctrl = fxmlLoader.getController();
             ctrl.stage = stage;
 
             stage.setTitle("MatheMann");
