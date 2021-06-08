@@ -1,5 +1,6 @@
 package at.g1.MatheMann.controller.signin;
 
+import at.g1.MatheMann.controller.mainmenu.MainMenuC;
 import at.g1.MatheMann.controller.signup.SignUpC;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,14 +46,14 @@ public class SignInC implements Initializable {
 
         String username = txtUsername.getText();
         String password = txtPassword.getText();
-        /*try {
+        try {
             for (int i = 0; i < SignIn.getSize(); i++) {
                 String correctUsername = SignIn.getNameOfUser(i);
                 String correctPassword = SignIn.getPasswordOfUser(i);
 
                 if (username.equals(correctUsername) && password.equals(correctPassword)){
                     System.out.println("Navigation started ...");
-                    MagicBallC.show(new Stage(), "Hello from Fist Stage");
+                    MainMenuC.show(new Stage());
                     stage.close();
                     return true;
             }
@@ -64,7 +65,7 @@ public class SignInC implements Initializable {
 
         catch(Exception e){
             System.err.println("error");
-        }*/
+        }
         return false;
     }
 
