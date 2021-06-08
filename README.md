@@ -1,3 +1,3 @@
-# MatheMann 187
+# MatheMann
 Mathematisches Lernspiel
 
