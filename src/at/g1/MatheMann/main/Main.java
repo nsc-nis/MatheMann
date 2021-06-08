@@ -1,6 +1,5 @@
 package at.g1.MatheMann.main;
 
-import at.g1.MatheMann.controller.game.gameController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
