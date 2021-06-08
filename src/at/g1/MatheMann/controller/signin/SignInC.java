@@ -7,11 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,40 +34,62 @@ public class SignInC implements Initializable {
             SignInC ctrl = fxmlLoader.getController();
             ctrl.stage = stage;
 
-            stage.setTitle("Welcome");
+            stage.setTitle("Wilkommen bei MatheMann");
+            stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
             stage.setScene(new Scene(root, 400, 400));
             stage.show();
-        } catch (IOException e){
-            System.err.println("Something wrong with firstV.fxml: " + e.getMessage());
-            e.printStackTrace(System.err);
+        } catch (Exception exception)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Internal Error");
+            alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+            alert.setResizable(true);
+            alert.showAndWait();
+            System.err.println(exception.getMessage());
+            exception.printStackTrace(System.err);
         }
     }
 
-    public boolean compare(){
+    public void compare(){
 
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         try {
-            for (int i = 0; i < SignIn.getSize(); i++) {
+            for (int i = 0; i < SignIn.getSize(); i++)
+            {
                 String correctUsername = SignIn.getNameOfUser(i);
                 String correctPassword = SignIn.getPasswordOfUser(i);
 
-                if (username.equals(correctUsername) && password.equals(correctPassword)){
-                    System.out.println("Navigation started ...");
+                if (username.equals(correctUsername) && password.equals(correctPassword))
+                {
                     MainMenuC.show(new Stage());
                     stage.close();
-                    return true;
-            }
-                else {
-                    System.err.println("Password or Username incorrect!");
+                }
+                else
+                {
+                    System.out.println("Test");
+                    /*
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Falsche Anmeldedaten");
+                    alert.setContentText("Dein Benutzername oder Passwort ist falsch! Versuch's nochmal!");
+                    alert.setResizable(true);
+                    alert.showAndWait();
+
+                     */
                 }
             }
         }
 
-        catch(Exception e){
-            System.err.println("error");
+        catch(Exception exception)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Internal Error");
+            alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+            alert.setResizable(true);
+            alert.showAndWait();
+            System.err.println(exception.getMessage());
+            exception.printStackTrace(System.err);
         }
-        return false;
     }
 
     @Override
@@ -82,7 +105,6 @@ public class SignInC implements Initializable {
 
     @FXML
     private void signUp(){
-        System.out.println("Navigation started ...");
         SignUpC.show(new Stage());
     }
 }

@@ -75,13 +75,6 @@ public class gameController implements Initializable
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
             stage.setScene(new Scene(root));
             stage.show();
-
-            Clip clip;
-            AudioInputStream audioInputStream;
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/intro.wav").getAbsoluteFile());
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
         }
         catch (Exception exception)
         {

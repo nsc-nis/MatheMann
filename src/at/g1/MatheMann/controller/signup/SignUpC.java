@@ -8,8 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -33,17 +35,23 @@ public class SignUpC implements Initializable {
             stageOne = stage;
 
             stageOne.setTitle("Sign Up");
+            stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
             stageOne.setScene(new Scene(root, 400, 400));
             stageOne.show();
         }
-        catch(Exception e)
+        catch(Exception exception)
         {
-            System.err.println("Something wrong with overview.fxml: " + e.getMessage());
-            e.printStackTrace(System.err);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Internal Error");
+            alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+            alert.setResizable(true);
+            alert.showAndWait();
+            System.err.println(exception.getMessage());
+            exception.printStackTrace(System.err);
         }
     }
 
-    public boolean newUser(){
+    public void newUser(){
         String name = textUsername.getText();
         String password = textPassword.getText();
         String reenter = textReenter.getText();
@@ -52,13 +60,20 @@ public class SignUpC implements Initializable {
 
             //System.out.println(SignIn.dataList.get(1).getUsername());
             //System.out.println(SignIn.dataList.get(1).getPassword());
-            System.out.println("Navigation started ...");
             stageOne.close();
-            return true;
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erfolgreich!");
+            alert.setContentText("Dein Account wurde erfolgreich erstellt!");
+            alert.setResizable(true);
+            alert.showAndWait();
         }
         else{
-            System.err.println("Password does not match! Try again.");
-            return false;
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Passwörter ungleich!");
+            alert.setContentText("Deine Passwörter stimmen nicht überein! Versuch's nochmal!");
+            alert.setResizable(true);
+            alert.showAndWait();
         }
     }
 
