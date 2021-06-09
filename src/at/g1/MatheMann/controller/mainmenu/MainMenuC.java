@@ -5,20 +5,28 @@ import at.g1.MatheMann.controller.signup.SignUpC;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainMenuC {
-    Button login_out_Btn;
+public class MainMenuC implements Initializable
+{
+    @FXML
+    private Button button_class;
+    @FXML
+    private Button button_logout;
 
     public static Stage stageMenu;
     public static void show(Stage stage) {
@@ -68,4 +76,10 @@ public class MainMenuC {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        //button_class.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/button_class1.png")));
+        button_logout.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/LogOut.png")));
+    }
 }
