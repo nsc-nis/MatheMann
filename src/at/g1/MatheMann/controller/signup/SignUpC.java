@@ -36,7 +36,7 @@ public class SignUpC implements Initializable {
 
             stageOne.setTitle("Sign Up");
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
-            stageOne.setScene(new Scene(root, 400, 400));
+            stageOne.setScene(new Scene(root));
             stageOne.show();
         }
         catch(Exception exception)
@@ -51,15 +51,15 @@ public class SignUpC implements Initializable {
         }
     }
 
-    public void newUser(){
+    public void newUser()
+    {
         String name = textUsername.getText();
         String password = textPassword.getText();
         String reenter = textReenter.getText();
+
         if(password.equals(reenter)){
             SignIn.addUser(name, password);
-
-            //System.out.println(SignIn.dataList.get(1).getUsername());
-            //System.out.println(SignIn.dataList.get(1).getPassword());
+            SignIn.setUser();
             stageOne.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

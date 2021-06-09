@@ -1,6 +1,8 @@
 package at.g1.MatheMann.controller.signin;
 
 
+import javafx.scene.control.Alert;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,7 +14,7 @@ public class SignIn{
     public static ArrayList<SignInData> dataList = new ArrayList<>();
 
     public static void setUser(){
-        try(BufferedReader br = new BufferedReader(new FileReader("/at/g1/MatheMann/ressources/Users.csv")))
+        try(BufferedReader br = new BufferedReader(new FileReader("src/at/g1/MatheMann/ressources/Users.csv")))
         {
             String u = br.readLine();
             if(u.equals("User SaveFile 1.0"))
@@ -24,22 +26,34 @@ public class SignIn{
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception exception)
         {
-
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Internal Error");
+            alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+            alert.setResizable(true);
+            alert.showAndWait();
+            System.err.println(exception.getMessage());
+            exception.printStackTrace(System.err);
         }
     }
 
     public static void addUser(String username, String password)
     {
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("/at/g1/MatheMann/ressources/Users.csv", true)))
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/at/g1/MatheMann/ressources/Users.csv", true)))
         {
-            bw.write(username+";"+password);
+            bw.write(username+";"+password+"\n");
             dataList.add(new SignInData(username, password));
         }
-        catch (Exception e)
+        catch (Exception exception)
         {
-
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Internal Error");
+            alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+            alert.setResizable(true);
+            alert.showAndWait();
+            System.err.println(exception.getMessage());
+            exception.printStackTrace(System.err);
         }
     }
 

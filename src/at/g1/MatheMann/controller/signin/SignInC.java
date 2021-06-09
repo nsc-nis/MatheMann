@@ -64,22 +64,10 @@ public class SignInC implements Initializable {
                 {
                     MainMenuC.show(new Stage());
                     stage.close();
-                }
-                else
-                {
-                    System.out.println("Test");
-                    /*
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Falsche Anmeldedaten");
-                    alert.setContentText("Dein Benutzername oder Passwort ist falsch! Versuch's nochmal!");
-                    alert.setResizable(true);
-                    alert.showAndWait();
-
-                     */
+                    return;
                 }
             }
         }
-
         catch(Exception exception)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -90,6 +78,12 @@ public class SignInC implements Initializable {
             System.err.println(exception.getMessage());
             exception.printStackTrace(System.err);
         }
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Falsche Anmeldedaten");
+        alert.setContentText("Dein Benutzername oder Passwort ist falsch! Versuch's nochmal!");
+        alert.setResizable(true);
+        alert.showAndWait();
     }
 
     @Override
