@@ -56,7 +56,7 @@ public class SignUpC implements Initializable {
         String password = textPassword.getText();
         String reenter = textReenter.getText();
         if(password.equals(reenter)){
-            SignIn.dataList.add(new SignInData(name, password));
+            SignIn.addUser(name, password);
 
             //System.out.println(SignIn.dataList.get(1).getUsername());
             //System.out.println(SignIn.dataList.get(1).getPassword());
