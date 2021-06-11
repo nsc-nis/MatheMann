@@ -30,6 +30,6 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="83.13671875" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="64.13671875" GridPane.rowIndex="2" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reenter Password:" GridPane.rowIndex="4" />
-      <Button mnemonicParsing="false" onAction="#next" prefWidth="80.0" text="Sign Up" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+      <Button defaultButton="true" mnemonicParsing="false" onAction="#next" prefWidth="80.0" text="Sign Up" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

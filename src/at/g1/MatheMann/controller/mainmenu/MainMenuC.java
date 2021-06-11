@@ -1,5 +1,6 @@
 package at.g1.MatheMann.controller.mainmenu;
 
+import at.g1.MatheMann.controller.game.gameController;
 import at.g1.MatheMann.controller.signin.SignInC;
 import at.g1.MatheMann.controller.signup.SignUpC;
 import javafx.event.Event;
@@ -75,11 +76,35 @@ public class MainMenuC implements Initializable
         showLogIn_out_window();
     }
 
+    @FXML
+    private void first_class()
+    {
+        gameController.show(new Stage());
+        stageMenu.close();
+    }
+
+    @FXML
+    private void second_class()
+    {
+
+    }
+
+    @FXML
+    private void third_class()
+    {
+
+    }
+
+    @FXML
+    private void fourth_class()
+    {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        //button_class.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/button_class1.png")));
         button_logout.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/LogOut.png")));
+        button_class.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
     }
 }

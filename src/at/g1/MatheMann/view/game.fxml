@@ -5,6 +5,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -34,8 +35,11 @@
                      <HBox.margin>
                         <Insets left="27.0" right="5.0" />
                      </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="a" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="button_2" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <RadioButton fx:id="button_2" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button" toggleGroup="$a">
                      <HBox.margin>
                         <Insets left="23.0" right="23.0" />
                      </HBox.margin>
@@ -47,12 +51,12 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <RadioButton fx:id="button_3" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <RadioButton fx:id="button_3" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button" toggleGroup="$a">
                      <HBox.margin>
                         <Insets left="27.0" right="5.0" />
                      </HBox.margin>
                   </RadioButton>
-                  <RadioButton fx:id="button_4" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button">
+                  <RadioButton fx:id="button_4" mnemonicParsing="false" onAction="#action_answer" prefHeight="106.0" prefWidth="261.0" text="Button" toggleGroup="$a">
                      <HBox.margin>
                         <Insets left="23.0" right="23.0" />
                      </HBox.margin>

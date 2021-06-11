@@ -1,5 +1,7 @@
 package at.g1.MatheMann.controller.game;
 
+import at.g1.MatheMann.controller.mainmenu.MainMenuC;
+import at.g1.MatheMann.main.Main;
 import at.g1.MatheMann.model.Answer;
 import at.g1.MatheMann.model.Question;
 import javafx.fxml.FXML;
@@ -10,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.stage.Stage;
 import javax.sound.sampled.*;
 import java.io.BufferedReader;
@@ -110,10 +114,10 @@ public class gameController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        class1 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse1.csv");
-        class2 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse2.csv");
-        class3 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse3.csv");
-        class4 = importQuestions("/at/g1/MatheMann/ressources/questions/Klasse4.csv");
+        class1 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse1.csv");
+        class2 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse2.csv");
+        class3 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse3.csv");
+        class4 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse4.csv");
 
         button_settings.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/options.png")));
     }
@@ -121,7 +125,8 @@ public class gameController implements Initializable
     @FXML
     private void action_settings()
     {
-
+        MainMenuC.show(new Stage());
+        stage.close();
     }
 
     @FXML

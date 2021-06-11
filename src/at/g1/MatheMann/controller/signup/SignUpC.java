@@ -2,7 +2,6 @@ package at.g1.MatheMann.controller.signup;
 
 
 import at.g1.MatheMann.controller.signin.SignIn;
-import at.g1.MatheMann.controller.signin.SignInData;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,7 +28,7 @@ public class SignUpC implements Initializable {
     public static Stage stageOne;
     public static void show(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(SignUpC.class.getResource("/at/g1/MatheMann/view/overview.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(SignUpC.class.getResource("/at/g1/MatheMann/view/signUp.fxml"));
             Parent root = fxmlLoader.load();
 
             stageOne = stage;
