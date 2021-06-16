@@ -41,13 +41,6 @@ public class MainMenuC implements Initializable
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
             stageMenu.setScene(new Scene(root));
             stageMenu.show();
-
-            Clip clip;
-            AudioInputStream audioInputStream;
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/intro.wav").getAbsoluteFile());
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
         }
         catch(Exception exception)
         {

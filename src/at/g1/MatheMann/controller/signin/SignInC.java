@@ -13,6 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -63,6 +67,14 @@ public class SignInC implements Initializable {
                 if (username.equals(correctUsername) && password.equals(correctPassword))
                 {
                     MainMenuC.show(new Stage());
+
+                    Clip clip;
+                    AudioInputStream audioInputStream;
+                    audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/intro.wav").getAbsoluteFile());
+                    clip = AudioSystem.getClip();
+                    clip.open(audioInputStream);
+                    clip.start();
+
                     stage.close();
                     return;
                 }
