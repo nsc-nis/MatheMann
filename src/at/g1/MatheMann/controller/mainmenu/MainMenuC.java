@@ -25,7 +25,13 @@ import java.util.ResourceBundle;
 public class MainMenuC implements Initializable
 {
     @FXML
-    private Button button_class;
+    private Button button_class1;
+    @FXML
+    private Button button_class2;
+    @FXML
+    private Button button_class3;
+    @FXML
+    private Button button_class4;
     @FXML
     private Button button_logout;
 
@@ -98,6 +104,9 @@ public class MainMenuC implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         button_logout.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/LogOut.png")));
-        button_class.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class1.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class2.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class3.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class4.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
     }
 }

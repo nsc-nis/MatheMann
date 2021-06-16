@@ -7,10 +7,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.g1.MatheMann.controller.mainmenu.MainMenuC">
    <children>
       <Button fx:id="button_logout" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#next" prefHeight="57.0" prefWidth="66.0" />
-      <Button fx:id="button_class" layoutX="200.0" layoutY="104.0" mnemonicParsing="false" onAction="#first_class" prefHeight="35.0" prefWidth="200.0" text="1. KLasse" />
-      <Button fx:id="button_class" layoutX="200.0" layoutY="165.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="2. Klasse" />
-      <Button fx:id="button_class" layoutX="200.0" layoutY="224.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="3. Klasse" />
-      <Button fx:id="button_class" layoutX="200.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="4. Klasse" />
+      <Button fx:id="button_class1" layoutX="200.0" layoutY="104.0" mnemonicParsing="false" onAction="#first_class" prefHeight="35.0" prefWidth="200.0" text="1. KLasse" />
+      <Button fx:id="button_class2" layoutX="200.0" layoutY="165.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="2. Klasse" />
+      <Button fx:id="button_class3" layoutX="200.0" layoutY="224.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="3. Klasse" />
+      <Button fx:id="button_class4" layoutX="200.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="4. Klasse" />
       <Text layoutX="200.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fortschritt" wrappingWidth="66.13671875" />
       <Text layoutX="200.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fortschritt" wrappingWidth="66.13671875" />
       <Text layoutX="200.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fortschritt" wrappingWidth="66.13671875" />

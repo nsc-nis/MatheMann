@@ -142,7 +142,19 @@ public class gameController implements Initializable
     }
 
     @FXML
-    private void action_answer1()
+    private void action_answer2()
+    {
+
+    }
+
+    @FXML
+    private void action_answer3()
+    {
+
+    }
+
+    @FXML
+    private void action_answer4()
     {
 
     }
