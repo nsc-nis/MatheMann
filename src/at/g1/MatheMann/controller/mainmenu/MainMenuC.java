@@ -3,7 +3,6 @@ package at.g1.MatheMann.controller.mainmenu;
 import at.g1.MatheMann.controller.game.gameController;
 import at.g1.MatheMann.controller.signin.SignInC;
 import at.g1.MatheMann.controller.signup.SignUpC;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,14 +13,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * MatheMann - Controller
+ * @author Niklas Schachl
+ * @version: 1.0, 16.6.2021
+ */
 public class MainMenuC implements Initializable
 {
     @FXML

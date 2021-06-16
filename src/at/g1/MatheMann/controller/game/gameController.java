@@ -1,7 +1,6 @@
 package at.g1.MatheMann.controller.game;
 
 import at.g1.MatheMann.controller.mainmenu.MainMenuC;
-import at.g1.MatheMann.main.Main;
 import at.g1.MatheMann.model.Answer;
 import at.g1.MatheMann.model.Question;
 import javafx.fxml.FXML;
@@ -12,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import javafx.stage.Stage;
 import javax.sound.sampled.*;
 import java.io.BufferedReader;
@@ -28,15 +25,24 @@ import java.util.ResourceBundle;
  * MatheMann - Controller
  * @author Simon Sperr
  * @version: 1.0, 1.6.2021
+ * @author Niklas Schachl
+ * @version: 1.1, 15.6.2021
  */
 public class gameController implements Initializable
 {
     private Stage stage;
 
-    private ArrayList<Question> class1;
-    private ArrayList<Question> class2;
-    private ArrayList<Question> class3;
-    private ArrayList<Question> class4;
+    private ArrayList<Question> questions_class1;
+    private ArrayList<Question> questions_class2;
+    private ArrayList<Question> questions_class3;
+    private ArrayList<Question> questions_class4;
+
+    private String button_1_answer;
+    private String button_2_answer;
+    private String button_3_answer;
+    private String button_4_answer;
+
+    private int active_class;
 
     @FXML
     private TextField text_score;
@@ -50,7 +56,7 @@ public class gameController implements Initializable
     private RadioButton button_2;
     @FXML
     private RadioButton button_3;
-    @FXML
+    @FXMLSperr
     private RadioButton button_4;
     @FXML
     private Button button_next;
@@ -114,10 +120,10 @@ public class gameController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        class1 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse1.csv");
-        class2 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse2.csv");
-        class3 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse3.csv");
-        class4 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse4.csv");
+        questions_class1 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse1.csv");
+        questions_class2 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse2.csv");
+        questions_class3 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse3.csv");
+        questions_class4 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse4.csv");
 
         button_settings.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/options.png")));
     }
@@ -138,25 +144,25 @@ public class gameController implements Initializable
     @FXML
     private void action_answer1()
     {
-
+        check_answer(button_1_answer);
     }
 
     @FXML
     private void action_answer2()
     {
-
+        check_answer(button_2_answer);
     }
 
     @FXML
     private void action_answer3()
     {
-
+        check_answer(button_3_answer);
     }
 
     @FXML
     private void action_answer4()
     {
-
+        check_answer(button_4_answer);
     }
 
     /**
@@ -182,5 +188,36 @@ public class gameController implements Initializable
             System.out.println("Fehler beim Laden!");
         }
         return questions;
+    }
+
+    private void initialize_class(int class_number)
+    {
+        active_class = class_number;
+    }
+
+    private void check_answer(String answer)
+    {
+        boolean isRight;
+        switch (active_class) {
+            case 1 -> isRight = check_answer_right(answer, questions_class1);
+            case 2 -> isRight = check_answer_right(answer, questions_class2);
+            case 3 -> isRight = check_answer_right(answer, questions_class3);
+            case 4 -> isRight = check_answer_right(answer, questions_class4);
+        }
+
+        if(isRight)
+        {
+            
+        }
+    }
+
+    private boolean check_answer_right(String answer, ArrayList<Question> questions)
+    {
+        for (Question question : questions)
+        {
+            if (question.getAnswer().getValue().equals(answer) && question.getAnswer().isRight())
+                return true;
+        }
+        return false;
     }
 }
