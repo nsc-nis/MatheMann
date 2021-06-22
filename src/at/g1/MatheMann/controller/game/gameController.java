@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
  * @author Simon Sperr
  * @version: 1.0, 1.6.2021
  * @author Niklas Schachl
- * @version: 1.1, 15.6.2021
+ * @version: 1.2, 22.6.2021
  */
 public class gameController implements Initializable
 {
@@ -70,7 +70,7 @@ public class gameController implements Initializable
      * Opens the stage and shows the window
      * @param stage The stage is given to the controller by the main-Class
      */
-    public static void show(Stage stage)
+    public static void show(Stage stage, int class_number)
     {
         try
         {
@@ -80,6 +80,8 @@ public class gameController implements Initializable
             //get controller which is connected to this fxml file
             gameController ctrl = fxmlLoader.getController();
             ctrl.stage = stage;
+
+            initialize_class(class_number);
 
             stage.setTitle("MatheMann");
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
@@ -190,7 +192,7 @@ public class gameController implements Initializable
         return questions;
     }
 
-    private void initialize_class(int class_number)
+    private static void initialize_class(int class_number)
     {
         active_class = class_number;
     }
@@ -207,7 +209,7 @@ public class gameController implements Initializable
 
         if(isRight)
         {
-            
+
         }
     }
 

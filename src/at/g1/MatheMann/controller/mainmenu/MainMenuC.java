@@ -69,34 +69,37 @@ public class MainMenuC implements Initializable
     }
 
     @FXML
-    private void next()
+    private void action_logout()
     {
         showLogIn_out_window();
     }
 
     @FXML
-    private void first_class()
+    private void action_firstClass()
     {
-        gameController.show(new Stage());
+        gameController.show(new Stage(), 1);
         stageMenu.close();
     }
 
     @FXML
-    private void second_class()
+    private void action_secondClass()
     {
-
+        gameController.show(new Stage(), 2);
+        stageMenu.close();
     }
 
     @FXML
-    private void third_class()
+    private void action_thirdClass()
     {
-
+        gameController.show(new Stage(), 3);
+        stageMenu.close();
     }
 
     @FXML
-    private void fourth_class()
+    private void action_fourthClass()
     {
-
+        gameController.show(new Stage(), 4);
+        stageMenu.close();
     }
 
     @Override
