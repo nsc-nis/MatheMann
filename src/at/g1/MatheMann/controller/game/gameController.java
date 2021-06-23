@@ -16,7 +16,6 @@ import javax.sound.sampled.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -32,17 +31,18 @@ public class gameController implements Initializable
 {
     private Stage stage;
 
-    private ArrayList<Question> questions_class1;
-    private ArrayList<Question> questions_class2;
-    private ArrayList<Question> questions_class3;
-    private ArrayList<Question> questions_class4;
+    private  ArrayList<Question> questions_class1;
+    private  ArrayList<Question> questions_class2;
+    private  ArrayList<Question> questions_class3;
+    private  ArrayList<Question> questions_class4;
 
-    private String button_1_answer;
-    private String button_2_answer;
-    private String button_3_answer;
-    private String button_4_answer;
+    private  String button_1_answer;
+    private  String button_2_answer;
+    private  String button_3_answer;
+    private  String button_4_answer;
 
-    private int active_class;
+    private static int active_class = 1;
+    private int active_question = 0;
 
     @FXML
     private TextField text_score;
@@ -56,7 +56,7 @@ public class gameController implements Initializable
     private RadioButton button_2;
     @FXML
     private RadioButton button_3;
-    @FXMLSperr
+    @FXML
     private RadioButton button_4;
     @FXML
     private Button button_next;
@@ -82,6 +82,7 @@ public class gameController implements Initializable
             ctrl.stage = stage;
 
             initialize_class(class_number);
+            active_class = class_number;
 
             stage.setTitle("MatheMann");
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
@@ -100,25 +101,6 @@ public class gameController implements Initializable
         }
     }
 
-    /**
-     * Plays a sound when the answer was correct
-     */
-    private static void playSound() throws NullPointerException, LineUnavailableException, IOException, UnsupportedAudioFileException
-    {
-        Clip clip;
-        AudioInputStream audioInputStream;
-
-        // create AudioInputStream object
-        audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/sound.wav").getAbsoluteFile());
-
-        // create clip reference
-        clip = AudioSystem.getClip();
-
-        // open audioInputStream to the clip
-        clip.open(audioInputStream);
-        clip.loop(1);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -128,6 +110,8 @@ public class gameController implements Initializable
         questions_class4 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse4.csv");
 
         button_settings.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/options.png")));
+
+        loadQuestion();
     }
 
     @FXML
@@ -140,7 +124,7 @@ public class gameController implements Initializable
     @FXML
     private void action_next()
     {
-
+        loadQuestion();
     }
 
     @FXML
@@ -200,26 +184,86 @@ public class gameController implements Initializable
     private void check_answer(String answer)
     {
         boolean isRight;
-        switch (active_class) {
-            case 1 -> isRight = check_answer_right(answer, questions_class1);
-            case 2 -> isRight = check_answer_right(answer, questions_class2);
-            case 3 -> isRight = check_answer_right(answer, questions_class3);
-            case 4 -> isRight = check_answer_right(answer, questions_class4);
+        switch (active_class)
+        {
+            case 1 -> isRight = check_answer_right(answer, questions_class1.get(active_question));
+            case 2 -> isRight = check_answer_right(answer, questions_class2.get(active_question));
+            case 3 -> isRight = check_answer_right(answer, questions_class3.get(active_question));
+            case 4 -> isRight = check_answer_right(answer, questions_class4.get(active_question));
+            default -> throw new IllegalStateException("Unexpected value: " + active_class);
         }
-
+        
         if(isRight)
         {
+            try
+            {
+                Clip clip;
+                AudioInputStream audioInputStream;
+                audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/sound.wav").getAbsoluteFile());
+                clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
 
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Antwort korrekt");
+                alert.setContentText("Deine Antwort ist richtig!");
+                alert.setResizable(true);
+                alert.showAndWait();
+            }
+            catch(Exception exception)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Internal Error");
+                alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+                alert.setResizable(true);
+                alert.showAndWait();
+                System.err.println(exception.getMessage());
+                exception.printStackTrace(System.err);
+            }
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Antwort falsch");
+            alert.setContentText("Deine Antwort ist falsch! Versuch's noch mal!");
+            alert.setResizable(true);
+            alert.showAndWait();
         }
     }
 
-    private boolean check_answer_right(String answer, ArrayList<Question> questions)
+    private boolean check_answer_right(String answer, Question question)
     {
-        for (Question question : questions)
-        {
-            if (question.getAnswer().getValue().equals(answer) && question.getAnswer().isRight())
+        Answer[] answers = question.getAnswers();
+
+        for (Answer value : answers) {
+            if (value.getValue().equals(answer) && value.isRight())
                 return true;
         }
         return false;
+    }
+
+    private void loadQuestion()
+    {
+        Question question;
+        switch (active_class) {
+            case 1 -> question = questions_class1.get(active_question);
+            case 2 -> question = questions_class2.get(active_question);
+            case 3 -> question = questions_class3.get(active_question);
+            case 4 -> question = questions_class4.get(active_question);
+            default -> throw new IllegalStateException("Unexpected value: " + active_class);
+        }
+
+        text_questions.setText(question.getValue());
+
+        button_1_answer = question.getAnswer().getValue();
+        button_1.setText(button_1_answer);
+        button_2_answer = question.getAnswer().getValue();
+        button_2.setText(button_2_answer);
+        button_3_answer = question.getAnswer().getValue();
+        button_3.setText(button_3_answer);
+        button_4_answer = question.getAnswer().getValue();
+        button_4.setText(button_4_answer);
+
+        active_question++;
     }
 }

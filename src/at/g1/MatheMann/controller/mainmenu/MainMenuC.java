@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * MatheMann - Controller
  * @author Niklas Schachl
- * @version: 1.0, 16.6.2021
+ * @version: 1.1, 22.6.2021
  */
 public class MainMenuC implements Initializable
 {

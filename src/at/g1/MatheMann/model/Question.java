@@ -71,9 +71,11 @@ public class Question {
 
     public Answer getAnswer()
     {
-        if(i > 4)
+        if(i > 3)
             i = 0;
 
-        return answers[i];
+        Answer answer = answers[i];
+        i++;
+        return answer;
     }
 }
