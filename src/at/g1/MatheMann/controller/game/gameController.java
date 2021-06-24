@@ -1,6 +1,7 @@
 package at.g1.MatheMann.controller.game;
 
 import at.g1.MatheMann.controller.mainmenu.MainMenuC;
+import at.g1.MatheMann.main.Main;
 import at.g1.MatheMann.model.Answer;
 import at.g1.MatheMann.model.Question;
 import javafx.fxml.FXML;
@@ -124,7 +125,30 @@ public class gameController implements Initializable
     @FXML
     private void action_next()
     {
-        loadQuestion();
+        ArrayList<Question> currentQuestion;
+        switch (active_class)
+        {
+            case 1 -> currentQuestion = questions_class1;
+            case 2 -> currentQuestion = questions_class2;
+            case 3 -> currentQuestion = questions_class3;
+            case 4 -> currentQuestion = questions_class4;
+            default -> throw new IllegalStateException("Unexpected value: " + active_class);
+        }
+
+        if (active_question < currentQuestion.size())
+        {
+            loadQuestion();
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Geschafft!");
+            alert.setContentText(String.format("Geschafft! Du hast alle Fragen der %d.Klasse erledigt!", active_class));
+            alert.setResizable(true);
+            alert.showAndWait();
+            MainMenuC.show(new Stage());
+            stage.close();
+        }
     }
 
     @FXML
@@ -166,7 +190,7 @@ public class gameController implements Initializable
             {
                 while ((q = br.readLine()) != null)
                 {
-                    String split[] = q.split(";");
+                    String[] split = q.split(";");
                     questions.add(new Question(split[0], new Answer(split[1], Boolean.parseBoolean(split[2])), new Answer(split[3], Boolean.parseBoolean(split[4])), new Answer(split[5], Boolean.parseBoolean(split[6])), new Answer(split[7], Boolean.parseBoolean(split[8]))));
                 }
             }
@@ -192,7 +216,7 @@ public class gameController implements Initializable
             case 4 -> isRight = check_answer_right(answer, questions_class4.get(active_question));
             default -> throw new IllegalStateException("Unexpected value: " + active_class);
         }
-        
+
         if(isRight)
         {
             try
@@ -235,7 +259,9 @@ public class gameController implements Initializable
     {
         Answer[] answers = question.getAnswers();
 
-        for (Answer value : answers) {
+        for (Answer value : answers)
+        {
+            System.out.printf("%s: %s: %b%n equals: %b%n", value.getValue(), answer, value.isRight(), value.getValue().equals(answer));
             if (value.getValue().equals(answer) && value.isRight())
                 return true;
         }
