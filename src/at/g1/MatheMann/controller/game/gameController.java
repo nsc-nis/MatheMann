@@ -52,13 +52,13 @@ public class gameController implements Initializable
     @FXML
     private TextArea text_questions;
     @FXML
-    private RadioButton button_1;
+    private Button button_1;
     @FXML
-    private RadioButton button_2;
+    private Button button_2;
     @FXML
-    private RadioButton button_3;
+    private Button button_3;
     @FXML
-    private RadioButton button_4;
+    private Button button_4;
     @FXML
     private Button button_next;
 
@@ -105,6 +105,7 @@ public class gameController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+
         questions_class1 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse1.csv");
         questions_class2 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse2.csv");
         questions_class3 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse3.csv");
@@ -210,10 +211,10 @@ public class gameController implements Initializable
         boolean isRight;
         switch (active_class)
         {
-            case 1 -> isRight = check_answer_right(answer, questions_class1.get(active_question));
-            case 2 -> isRight = check_answer_right(answer, questions_class2.get(active_question));
-            case 3 -> isRight = check_answer_right(answer, questions_class3.get(active_question));
-            case 4 -> isRight = check_answer_right(answer, questions_class4.get(active_question));
+            case 1 -> isRight = check_answer_right(answer, questions_class1.get(active_question-1));
+            case 2 -> isRight = check_answer_right(answer, questions_class2.get(active_question-1));
+            case 3 -> isRight = check_answer_right(answer, questions_class3.get(active_question-1));
+            case 4 -> isRight = check_answer_right(answer, questions_class4.get(active_question-1));
             default -> throw new IllegalStateException("Unexpected value: " + active_class);
         }
 
@@ -261,7 +262,6 @@ public class gameController implements Initializable
 
         for (Answer value : answers)
         {
-            System.out.printf("%s: %s: %b%n equals: %b%n", value.getValue(), answer, value.isRight(), value.getValue().equals(answer));
             if (value.getValue().equals(answer) && value.isRight())
                 return true;
         }
