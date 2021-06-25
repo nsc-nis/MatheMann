@@ -112,6 +112,10 @@ public class gameController implements Initializable
         questions_class4 = importQuestions("src/at/g1/MatheMann/ressources/questions/Klasse4.csv");
 
         button_settings.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/options.png")));
+        button_1.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame1.png')");
+        button_2.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame1.png')");
+        button_3.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame1.png')");
+        button_4.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame1.png')");
 
         loadQuestion();
     }
