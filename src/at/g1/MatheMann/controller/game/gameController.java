@@ -146,20 +146,33 @@ public class gameController implements Initializable
         }
         else
         {
-            Clip clip;
-            AudioInputStream audioInputStream;
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/ichliebe.wav").getAbsoluteFile());
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
+            try
+            {
+                Clip clip;
+                AudioInputStream audioInputStream;
+                audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/ichliebe.wav").getAbsoluteFile());
+                clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Geschafft!");
-            alert.setContentText(String.format("Geschafft! Du hast alle Fragen der %d.Klasse erledigt!", active_class));
-            alert.setResizable(true);
-            alert.showAndWait();
-            MainMenuC.show(new Stage());
-            stage.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Geschafft!");
+                alert.setContentText(String.format("Geschafft! Du hast alle Fragen der %d.Klasse erledigt!", active_class));
+                alert.setResizable(true);
+                alert.showAndWait();
+                MainMenuC.show(new Stage());
+                stage.close();
+            }
+            catch(Exception exception)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Internal Error");
+                alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+                alert.setResizable(true);
+                alert.showAndWait();
+                System.err.println(exception.getMessage());
+                exception.printStackTrace(System.err);
+            }
         }
     }
 
@@ -235,7 +248,7 @@ public class gameController implements Initializable
             {
                 Clip clip;
                 AudioInputStream audioInputStream;
-                audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/sound.wav").getAbsoluteFile());
+                audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/success.wav").getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
                 clip.start();
