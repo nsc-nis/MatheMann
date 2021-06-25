@@ -238,6 +238,7 @@ public class gameController implements Initializable
                 alert.setContentText("Deine Antwort ist richtig!");
                 alert.setResizable(true);
                 alert.showAndWait();
+                action_next();
             }
             catch(Exception exception)
             {
@@ -254,9 +255,19 @@ public class gameController implements Initializable
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Antwort falsch");
-            alert.setContentText("Deine Antwort ist falsch! Versuch's noch mal!");
+            String right = "?";
+            if (check_answer_right(button_1_answer, questions_class1.get(active_question-1)))
+                right = button_1_answer;
+            if (check_answer_right(button_2_answer, questions_class1.get(active_question-1)))
+                right = button_2_answer;
+            if (check_answer_right(button_3_answer, questions_class1.get(active_question-1)))
+                right = button_3_answer;
+            if (check_answer_right(button_4_answer, questions_class1.get(active_question-1)))
+                right = button_4_answer;
+            alert.setContentText(String.format("Deine Antwort ist falsch! Die Antwort wäre %s", right));
             alert.setResizable(true);
             alert.showAndWait();
+            action_next();
         }
     }
 
