@@ -110,5 +110,6 @@ public class MainMenuC implements Initializable
         button_class2.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
         button_class3.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
         button_class4.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_logout.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame2.png')");
     }
 }
