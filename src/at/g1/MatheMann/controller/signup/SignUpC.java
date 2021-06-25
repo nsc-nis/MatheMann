@@ -35,7 +35,7 @@ public class SignUpC implements Initializable {
 
             stageOne.setTitle("Sign Up");
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
-            stageOne.setScene(new Scene(root));
+            stageOne.setScene(new Scene(root, 400, 400));
             stageOne.show();
         }
         catch(Exception exception)

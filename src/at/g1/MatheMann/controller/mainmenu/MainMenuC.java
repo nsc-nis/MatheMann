@@ -3,7 +3,6 @@ package at.g1.MatheMann.controller.mainmenu;
 import at.g1.MatheMann.controller.game.gameController;
 import at.g1.MatheMann.controller.signin.SignInC;
 import at.g1.MatheMann.controller.signup.SignUpC;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,18 +13,24 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * MatheMann - Controller
+ * @author Niklas Schachl
+ * @version: 1.1, 22.6.2021
+ */
 public class MainMenuC implements Initializable
 {
     @FXML
-    private Button button_class;
+    private Button button_class1;
+    @FXML
+    private Button button_class2;
+    @FXML
+    private Button button_class3;
+    @FXML
+    private Button button_class4;
     @FXML
     private Button button_logout;
 
@@ -41,13 +46,6 @@ public class MainMenuC implements Initializable
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
             stageMenu.setScene(new Scene(root));
             stageMenu.show();
-
-            Clip clip;
-            AudioInputStream audioInputStream;
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/intro.wav").getAbsoluteFile());
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
         }
         catch(Exception exception)
         {
@@ -71,40 +69,47 @@ public class MainMenuC implements Initializable
     }
 
     @FXML
-    private void next()
+    private void action_logout()
     {
         showLogIn_out_window();
     }
 
     @FXML
-    private void first_class()
+    private void action_firstClass()
     {
-        gameController.show(new Stage());
+        gameController.show(new Stage(), 1);
         stageMenu.close();
     }
 
     @FXML
-    private void second_class()
+    private void action_secondClass()
     {
-
+        gameController.show(new Stage(), 2);
+        stageMenu.close();
     }
 
     @FXML
-    private void third_class()
+    private void action_thirdClass()
     {
-
+        gameController.show(new Stage(), 3);
+        stageMenu.close();
     }
 
     @FXML
-    private void fourth_class()
+    private void action_fourthClass()
     {
-
+        gameController.show(new Stage(), 4);
+        stageMenu.close();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         button_logout.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/LogOut.png")));
-        button_class.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class1.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class2.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class3.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_class4.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
+        button_logout.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame2.png')");
     }
 }

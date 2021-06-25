@@ -35,7 +35,8 @@ public class Answer {
      * Checks if the Answer is right
      * @return true if right false if wrong
      */
-    public boolean isRight() {
+    public boolean isRight()
+    {
         return right;
     }
 }
