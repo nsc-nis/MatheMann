@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.g1.MatheMann.controller.signin.SignInC">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <TextField fx:id="txtUsername" promptText="username" GridPane.rowIndex="1" />
+      <PasswordField fx:id="txtPassword" promptText="password" GridPane.rowIndex="3" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="83.13671875" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="64.13671875" GridPane.rowIndex="2" />
+      <Button defaultButton="true" mnemonicParsing="false" onAction="#next" onMouseClicked="#next" prefWidth="80.0" text="Sign In" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#signUp" prefWidth="80.0" text="Sign Up" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+   </children>
+</GridPane>
