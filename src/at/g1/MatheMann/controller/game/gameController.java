@@ -146,6 +146,13 @@ public class gameController implements Initializable
         }
         else
         {
+            Clip clip;
+            AudioInputStream audioInputStream;
+            audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/ichliebe.wav").getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Geschafft!");
             alert.setContentText(String.format("Geschafft! Du hast alle Fragen der %d.Klasse erledigt!", active_class));
@@ -222,9 +229,9 @@ public class gameController implements Initializable
             default -> throw new IllegalStateException("Unexpected value: " + active_class);
         }
 
-        if(isRight)
+        try
         {
-            try
+            if(isRight)
             {
                 Clip clip;
                 AudioInputStream audioInputStream;
@@ -240,34 +247,41 @@ public class gameController implements Initializable
                 alert.showAndWait();
                 action_next();
             }
-            catch(Exception exception)
+            else
             {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Internal Error");
-                alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+                Clip clip;
+                AudioInputStream audioInputStream;
+                audioInputStream = AudioSystem.getAudioInputStream(new File("src/at/g1/MatheMann/ressources/zischzisch.wav").getAbsoluteFile());
+                clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Antwort falsch");
+                String right = "?";
+                if (check_answer_right(button_1_answer, questions_class1.get(active_question-1)))
+                    right = button_1_answer;
+                if (check_answer_right(button_2_answer, questions_class1.get(active_question-1)))
+                    right = button_2_answer;
+                if (check_answer_right(button_3_answer, questions_class1.get(active_question-1)))
+                    right = button_3_answer;
+                if (check_answer_right(button_4_answer, questions_class1.get(active_question-1)))
+                    right = button_4_answer;
+                alert.setContentText(String.format("Deine Antwort ist falsch! Die Antwort wäre %s", right));
                 alert.setResizable(true);
                 alert.showAndWait();
-                System.err.println(exception.getMessage());
-                exception.printStackTrace(System.err);
+                action_next();
             }
         }
-        else
+        catch(Exception exception)
         {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Antwort falsch");
-            String right = "?";
-            if (check_answer_right(button_1_answer, questions_class1.get(active_question-1)))
-                right = button_1_answer;
-            if (check_answer_right(button_2_answer, questions_class1.get(active_question-1)))
-                right = button_2_answer;
-            if (check_answer_right(button_3_answer, questions_class1.get(active_question-1)))
-                right = button_3_answer;
-            if (check_answer_right(button_4_answer, questions_class1.get(active_question-1)))
-                right = button_4_answer;
-            alert.setContentText(String.format("Deine Antwort ist falsch! Die Antwort wäre %s", right));
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Internal Error");
+            alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
             alert.setResizable(true);
             alert.showAndWait();
-            action_next();
+            System.err.println(exception.getMessage());
+            exception.printStackTrace(System.err);
         }
     }
 
