@@ -21,8 +21,8 @@ public class SignIn{
             {
                 while ((u = br.readLine()) != null)
                 {
-                    String split[] = u.split(";");
-                    dataList.add(new SignInData(split[0], split[1]));
+                    String[] split = u.split(";");
+                    dataList.add(new SignInData(split[0], split[1], Integer.parseInt(split[2]), Integer.parseInt(split[3]), Integer.parseInt(split[4]), Integer.parseInt(split[5])));
                 }
             }
         }
@@ -43,7 +43,7 @@ public class SignIn{
         try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/at/g1/MatheMann/ressources/Users.csv", true)))
         {
             bw.write(username+";"+password+"\n");
-            dataList.add(new SignInData(username, password));
+            dataList.add(new SignInData(username, password, 0, 0, 0, 0));
         }
         catch (Exception exception)
         {
