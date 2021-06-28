@@ -1,7 +1,7 @@
 package at.g1.MatheMann.controller.game;
 
 import at.g1.MatheMann.controller.mainmenu.MainMenuC;
-import at.g1.MatheMann.main.Main;
+import at.g1.MatheMann.controller.signin.SignIn;
 import at.g1.MatheMann.model.Answer;
 import at.g1.MatheMann.model.Question;
 import javafx.fxml.FXML;
@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 /**
@@ -44,6 +45,7 @@ public class gameController implements Initializable
 
     private static int active_class = 1;
     private int active_question = 0;
+    private int active_user;
 
     @FXML
     private TextField text_score;
@@ -71,7 +73,7 @@ public class gameController implements Initializable
      * Opens the stage and shows the window
      * @param stage The stage is given to the controller by the main-Class
      */
-    public static void show(Stage stage, int class_number)
+    public static void show(Stage stage, int class_number, int user)
     {
         try
         {
@@ -81,9 +83,20 @@ public class gameController implements Initializable
             //get controller which is connected to this fxml file
             gameController ctrl = fxmlLoader.getController();
             ctrl.stage = stage;
+            ctrl.active_user = user;
 
             initialize_class(class_number);
             active_class = class_number;
+            ctrl.loadQuestion();
+
+            switch (active_class)
+            {
+                case 1 -> ctrl.text_score.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore1());
+                case 2 -> ctrl.text_score.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore2());
+                case 3 -> ctrl.text_score.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore3());
+                case 4 -> ctrl.text_score.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore4());
+                default -> throw new IllegalStateException("Unexpected value: " + active_class);
+            }
 
             stage.setTitle("MatheMann");
             stage.getIcons().add(new Image("/at/g1/MatheMann/ressources/icon.png"));
@@ -116,14 +129,12 @@ public class gameController implements Initializable
         button_2.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame1.png')");
         button_3.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame1.png')");
         button_4.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame1.png')");
-
-        loadQuestion();
     }
 
     @FXML
     private void action_settings()
     {
-        MainMenuC.show(new Stage());
+        MainMenuC.show(new Stage(), active_user);
         stage.close();
     }
 
@@ -160,7 +171,7 @@ public class gameController implements Initializable
                 alert.setContentText(String.format("Geschafft! Du hast alle Fragen der %d.Klasse erledigt!", active_class));
                 alert.setResizable(true);
                 alert.showAndWait();
-                MainMenuC.show(new Stage());
+                MainMenuC.show(new Stage(), active_user);
                 stage.close();
             }
             catch(Exception exception)
@@ -218,6 +229,7 @@ public class gameController implements Initializable
                     String[] split = q.split(";");
                     questions.add(new Question(split[0], new Answer(split[1], Boolean.parseBoolean(split[2])), new Answer(split[3], Boolean.parseBoolean(split[4])), new Answer(split[5], Boolean.parseBoolean(split[6])), new Answer(split[7], Boolean.parseBoolean(split[8]))));
                 }
+                Collections.shuffle(questions);
             }
         } catch (Exception e) {
             System.out.println("Fehler beim Laden!");
@@ -253,6 +265,28 @@ public class gameController implements Initializable
                 clip.open(audioInputStream);
                 clip.start();
 
+                switch (active_class)
+                {
+                    case 1:
+                        SignIn.getUser(active_user).changeScore1(5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore1());
+                        break;
+                    case 2:
+                        SignIn.getUser(active_user).changeScore2(5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore2());
+                        break;
+                    case 3:
+                        SignIn.getUser(active_user).changeScore3(5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore3());
+                        break;
+                    case 4:
+                        SignIn.getUser(active_user).changeScore4(5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore4());
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + active_class);
+                }
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Antwort korrekt");
                 alert.setContentText("Deine Antwort ist richtig!");
@@ -269,6 +303,27 @@ public class gameController implements Initializable
                 clip.open(audioInputStream);
                 clip.start();
 
+                switch (active_class)
+                {
+                    case 1:
+                        SignIn.getUser(active_user).changeScore1(-5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore1());
+                        break;
+                    case 2:
+                        SignIn.getUser(active_user).changeScore2(-5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore2());
+                        break;
+                    case 3:
+                        SignIn.getUser(active_user).changeScore3(-5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore3());
+                        break;
+                    case 4:
+                        SignIn.getUser(active_user).changeScore4(-5);
+                        text_score.setText("Score: " + SignIn.getUser(active_user).getScore4());
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + active_class);
+                }
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Antwort falsch");
                 String right = "?";

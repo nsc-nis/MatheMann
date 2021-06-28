@@ -69,4 +69,30 @@ public class SignIn{
         return dataList.get(index).getPassword();
     }
 
+    public static SignInData getUser(int index)
+    {
+        return dataList.get(index);
+    }
+
+    public static void writeUsers()
+    {
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/at/g1/MatheMann/ressources/Users.csv")))
+        {
+            bw.write("User SaveFile 1.0\n");
+            for (SignInData user:dataList)
+            {
+                bw.write(user.username+";"+user.getPassword()+";"+user.getScore1()+";"+user.getScore2()+";"+user.getScore3()+";"+user.getScore4()+"\n");
+            }
+        }
+        catch (Exception exception)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Internal Error");
+            alert.setContentText(String.format("An internal Error occurred. Please restart the program%nor contact the developer on GitHub%n%nError message: %s", exception.getMessage()));
+            alert.setResizable(true);
+            alert.showAndWait();
+            System.err.println(exception.getMessage());
+            exception.printStackTrace(System.err);
+        }
+    }
 }

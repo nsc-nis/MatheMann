@@ -11,9 +11,9 @@
       <Button fx:id="button_class2" layoutX="200.0" layoutY="165.0" mnemonicParsing="false" onAction="#action_secondClass" prefHeight="35.0" prefWidth="200.0" text="2. Klasse" />
       <Button fx:id="button_class3" layoutX="200.0" layoutY="224.0" mnemonicParsing="false" onAction="#action_thirdClass" prefHeight="35.0" prefWidth="200.0" text="3. Klasse" />
       <Button fx:id="button_class4" layoutX="200.0" layoutY="285.0" mnemonicParsing="false" onAction="#action_fourthClass" prefHeight="35.0" prefWidth="200.0" text="4. Klasse" />
-      <Text layoutX="200.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fortschritt" wrappingWidth="66.13671875" />
-      <Text layoutX="200.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fortschritt" wrappingWidth="66.13671875" />
-      <Text layoutX="200.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fortschritt" wrappingWidth="66.13671875" />
-      <Text layoutX="200.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fortschritt" wrappingWidth="66.13671875" />
+      <Text fx:id="progress_class1" layoutX="200.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="66.13671875" />
+      <Text fx:id="progress_class2" layoutX="200.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="66.13671875" />
+      <Text fx:id="progress_class3" layoutX="200.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="66.13671875" />
+      <Text fx:id="progress_class4" layoutX="200.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="66.13671875" />
    </children>
 </AnchorPane>

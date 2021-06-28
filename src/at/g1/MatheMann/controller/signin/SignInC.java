@@ -67,7 +67,7 @@ public class SignInC implements Initializable {
 
                 if (username.equals(correctUsername) && password.equals(correctPassword))
                 {
-                    MainMenuC.show(new Stage());
+                    MainMenuC.show(new Stage(), i);
 
                     Clip clip;
                     AudioInputStream audioInputStream;
