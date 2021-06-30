@@ -4,8 +4,8 @@ package at.g1.MatheMann.model;
  * Answers belong to Questions and can be right
  */
 public class Answer {
-    private String value;
-    private boolean right;
+    private final String value;
+    private final boolean right;
 
     /**
      * Creates an Answer with its text and wheter it is right or not
@@ -15,15 +15,6 @@ public class Answer {
     public Answer(String value, boolean right)
     {
         this.value = value;
-        this.right = right;
-    }
-
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public void setRight(boolean right) {
         this.right = right;
     }
 

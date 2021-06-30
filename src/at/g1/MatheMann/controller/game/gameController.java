@@ -61,8 +61,6 @@ public class gameController implements Initializable
     private Button button_3;
     @FXML
     private Button button_4;
-    @FXML
-    private Button button_next;
 
     public gameController()
     {
@@ -265,26 +263,24 @@ public class gameController implements Initializable
                 clip.open(audioInputStream);
                 clip.start();
 
-                switch (active_class)
-                {
-                    case 1:
+                switch (active_class) {
+                    case 1 -> {
                         SignIn.getUser(active_user).changeScore1(5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore1());
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         SignIn.getUser(active_user).changeScore2(5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore2());
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         SignIn.getUser(active_user).changeScore3(5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore3());
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         SignIn.getUser(active_user).changeScore4(5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore4());
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + active_class);
+                    }
+                    default -> throw new IllegalStateException("Unexpected value: " + active_class);
                 }
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -292,7 +288,6 @@ public class gameController implements Initializable
                 alert.setContentText("Deine Antwort ist richtig!");
                 alert.setResizable(true);
                 alert.showAndWait();
-                action_next();
             }
             else
             {
@@ -303,26 +298,24 @@ public class gameController implements Initializable
                 clip.open(audioInputStream);
                 clip.start();
 
-                switch (active_class)
-                {
-                    case 1:
+                switch (active_class) {
+                    case 1 -> {
                         SignIn.getUser(active_user).changeScore1(-5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore1());
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         SignIn.getUser(active_user).changeScore2(-5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore2());
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         SignIn.getUser(active_user).changeScore3(-5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore3());
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         SignIn.getUser(active_user).changeScore4(-5);
                         text_score.setText("Score: " + SignIn.getUser(active_user).getScore4());
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + active_class);
+                    }
+                    default -> throw new IllegalStateException("Unexpected value: " + active_class);
                 }
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Antwort falsch");
@@ -338,8 +331,8 @@ public class gameController implements Initializable
                 alert.setContentText(String.format("Deine Antwort ist falsch! Die Antwort wäre %s", right));
                 alert.setResizable(true);
                 alert.showAndWait();
-                action_next();
             }
+            action_next();
         }
         catch(Exception exception)
         {
