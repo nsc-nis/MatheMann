@@ -57,6 +57,11 @@ public class MainMenuC implements Initializable
 
             ctrl.active_user = user;
 
+            ctrl.progress_class1.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore1());
+            ctrl.progress_class2.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore2());
+            ctrl.progress_class3.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore3());
+            ctrl.progress_class4.setText("Score: " + SignIn.getUser(ctrl.active_user).getScore4());
+
             stageMenu = stage;
 
             stageMenu.setTitle("MatheMann - Hauptmenü");
@@ -125,13 +130,9 @@ public class MainMenuC implements Initializable
     {
         button_logout.setGraphic(new ImageView(new Image("/at/g1/MatheMann/ressources/LogOut.png")));
         button_class1.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
-        progress_class1.setText("Score: " + SignIn.getUser(active_user).getScore1());
         button_class2.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
-        progress_class2.setText("Score: " + SignIn.getUser(active_user).getScore2());
         button_class3.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
-        progress_class3.setText("Score: " + SignIn.getUser(active_user).getScore3());
         button_class4.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_class1.png')");
-        progress_class4.setText("Score: " + SignIn.getUser(active_user).getScore4());
         button_logout.setStyle("-fx-background-image: url('/at/g1/MatheMann/ressources/button_frame2.png')");
     }
 }

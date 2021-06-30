@@ -42,7 +42,7 @@ public class SignIn{
     {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/at/g1/MatheMann/ressources/Users.csv", true)))
         {
-            bw.write(username+";"+password+"\n");
+            bw.write(username+";"+password+";0;0;0;0\n");
             dataList.add(new SignInData(username, password, 0, 0, 0, 0));
         }
         catch (Exception exception)
